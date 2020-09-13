@@ -10,14 +10,23 @@ export default styled(Grid)`
       text-decoration: none;
       color: ${(props) => props.theme.palette.text.primary};
       display: block;
-      padding: ${(props) => props.theme.typography.pxToRem(16)} ${(props) => props.theme.typography.pxToRem(24)};
+      padding: ${(props) => props.theme.typography.pxToRem(6)} ${(props) => props.theme.typography.pxToRem(12)};
+      ${(props) => props.theme.breakpoints.up('sm')} {
+        padding: ${(props) => props.theme.typography.pxToRem(16)} ${(props) => props.theme.typography.pxToRem(24)};
+      }
     }
     &__content {
       padding: 0;
     }
     &__img {
-      height: ${(props) => props.theme.typography.pxToRem(300)};
+      height: ${(props) => props.theme.typography.pxToRem(140)};
       background-size: contain;
+      ${(props) => props.theme.breakpoints.up('sm')} {
+        height: ${(props) => props.theme.typography.pxToRem(300)};
+      }
+    }
+    &__title {
+      margin-top: ${(props) => props.theme.typography.pxToRem(10)};
     }
   }
 `

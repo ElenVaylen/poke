@@ -12,7 +12,7 @@ import Styled from './styles'
 const PokemonListItem: React.FC<Pokemon> = ({ name, url, image }) => {
   const id = url.match(/pokemon\/\d+/)[0].match(/\d+/)[0]
   return (
-    <Styled item xs={6} lg={3} className='pokemon-list-item'>
+    <Styled item xs={6} sm={6} lg={3} className='pokemon-list-item'>
       <Card className='pokemon-list-item__card'>
         <CardActionArea>
           <Link to={`/detail/${id}`} className='pokemon-list-item__link'>
@@ -21,7 +21,7 @@ const PokemonListItem: React.FC<Pokemon> = ({ name, url, image }) => {
               image={image || 'https://via.placeholder.com/300'}
             />
             <CardContent className='pokemon-list-item__content'>
-              <Typography variant='h6' component='h2'>
+              <Typography variant='h6' component='h2' className='pokemon-list-item__title'>
                 {name}
               </Typography>
             </CardContent>

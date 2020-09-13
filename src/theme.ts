@@ -51,6 +51,7 @@ const theme = createMuiTheme({
       xl: 1920,
     },
   },
+  spacing: (factor) => `${0.5 * factor}rem`,
 })
 
 export default theme
