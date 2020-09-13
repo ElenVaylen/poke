@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  BrowserRouter, Redirect, Route, Switch,
+  BrowserRouter, Route, Switch,
 } from 'react-router-dom'
 
 import MainPage from 'pages/MainPage'
@@ -19,7 +19,6 @@ const App: React.FC = () => (
       <Route path='/abilities/:id' exact>
         <AbilityPage />
       </Route>
-      <Redirect to='/' />
     </Switch>
   </BrowserRouter>
 )

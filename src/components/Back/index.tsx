@@ -7,7 +7,7 @@ import Styled from './styles'
 const Back: React.FC = () => {
   const history = useHistory()
   return (
-    <Styled className='back' onClick={() => history.goBack()}>
+    <Styled className='back' onClick={history.goBack}>
       <ArrowBackIosIcon className='back__icon' />
       <span className='back__text'>Back</span>
     </Styled>

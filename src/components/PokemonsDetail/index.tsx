@@ -65,7 +65,7 @@ const PokemonsDetail: React.FC<Props> = ({ detail, loading }) => {
                 </TableHead>
                 <TableBody>
                   {detail.stats.map((row) => (
-                    <TableRow key={row.baseStat}>
+                    <TableRow key={row.stat.name}>
                       <TableCell align='left'>{row.stat.name}</TableCell>
                       <TableCell align='center'>{row.baseStat}</TableCell>
                       <TableCell align='center'>{row.effort}</TableCell>

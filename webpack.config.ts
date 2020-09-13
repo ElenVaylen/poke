@@ -17,7 +17,13 @@ const webpackConfig = (env): Configuration => ({
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'build.js',
-    publicPath: '/'
+    chunkFilename: '[name].bundle.js',
+    publicPath: env.production ? './' : '/'
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   module: {
     rules: [
