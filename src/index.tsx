@@ -1,13 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-import App from "./App";
+import { Provider } from 'react-redux'
+import { ThemeProvider } from 'styled-components'
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import store from './store/store'
+import App from './App'
 
 import './index.scss'
 
+import theme from './theme'
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </MuiThemeProvider>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )

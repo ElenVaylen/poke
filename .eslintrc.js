@@ -1,32 +1,22 @@
 module.exports = {
-  root: true,
+  parser: '@typescript-eslint/parser',
   extends: [
-    'eslint:recommended',
-    'plugin:prettier/recommended',
-    'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
-    'plugin:@typescript-eslint/eslint-recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:@typescript-eslint/recommended',
   ],
-  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   env: {
     browser: true,
-    es6: true,
-    jest: true,
+    jasmine: true,
   },
   parserOptions: {
-    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module', // Allows for the use of imports
+    ecmaVersion: 2018,
+    sourceType: 'module',
     ecmaFeatures: {
-      jsx: true, // Allows for the parsing of JSX
-      arrowFunctions: true,
+      jsx: true,
     },
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
   settings: {
-    react: {
-      version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
-    },
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -35,17 +25,36 @@ module.exports = {
     },
   },
   rules: {
-    // Existing rules
-    'comma-dangle': 'off', // https://eslint.org/docs/rules/comma-dangle
-    'function-paren-newline': 'off', // https://eslint.org/docs/rules/function-paren-newline
-    'global-require': 'off', // https://eslint.org/docs/rules/global-require
-    'import/no-dynamic-require': 'off', // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    'no-inner-declarations': 'off', // https://eslint.org/docs/rules/no-inner-declarations
-// New rules
-    'class-methods-use-this': 'off',
-    'import/extensions': 'off',
-    'import/prefer-default-export': 'off',
+    semi: 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react/prop-types': [0, { ignore: ['children'] }],
+    'jsx-quotes': ['error', 'prefer-single'],
+    // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
+    'no-prototype-builtins': 'off',
+    // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
+    'import/prefer-default-export': 0,
+    'import/no-default-export': 'off',
+    // Too restrictive: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md
+    'react/destructuring-assignment': 'off',
+    // No jsx extension: https://github.com/facebook/create-react-app/issues/87#issuecomment-234627904
+    'react/jsx-filename-extension': 'off',
+    // Use function hoisting to improve code readability
+    'no-use-before-define': 'off',
+    // eslint-disable-next-line max-len
+    // Makes no sense to allow type inferrence for expression parameters, but require typing the response
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    // Common abbreviations are known and readable
+    'unicorn/prevent-abbreviations': 'off',
   },
 };

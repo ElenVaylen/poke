@@ -1,29 +1,37 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "umd",
-    "lib": [
-      "ES2015",
-      "ES2016",
-      "ES2017",
-      "ES2018",
-      "ES2019",
-      "ES2020",
-      "ESNext",
-      "dom"
-    ],
-    "jsx": "react",
-    "noEmit": true,
     "sourceMap": true,
-    /* Strict Type-Checking Options */
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-
-    /* Module Resolution Options */
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "allowJs": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true
+    "downlevelIteration": true,
+    "paths": {
+      "components/*": [
+        "src/components/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
+      ],
+      "store/*": [
+        "src/store/*"
+      ]
+    }
   },
-  "include": ["src"]
+  "include": [
+    "./src",
+    "./webpack.config.ts"
+  ]
 }
