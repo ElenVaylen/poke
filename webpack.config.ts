@@ -20,11 +20,16 @@ const webpackConfig = (env): Configuration => ({
     chunkFilename: '[name].bundle.js',
     publicPath: env.production ? './' : '/'
   },
+  devServer: {
+    contentBase: path.join(__dirname, '/dist'),
+    historyApiFallback: true,
+  },
   optimization: {
     splitChunks: {
       chunks: 'all',
     },
   },
+  performance: { hints: false },
   module: {
     rules: [
       {
@@ -47,9 +52,6 @@ const webpackConfig = (env): Configuration => ({
         }
       }
     ]
-  },
-  devServer: {
-    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
